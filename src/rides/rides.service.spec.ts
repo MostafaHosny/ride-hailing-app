@@ -12,7 +12,9 @@ describe('RidesService', () => {
     service = module.get<RidesService>(RidesService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it('should return a fixed normlized price', () => {
+    const normlizedride = { provider: 'Uber', price: '25.00', duration: '15 mins', typeOfCar: 'Sedan' }
+    const undefinedRides = service.getRides();
+    expect(undefinedRides[0].price).toEqual(normlizedride.price);
   });
 });
