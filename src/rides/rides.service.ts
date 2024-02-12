@@ -1,11 +1,17 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Ride, UnifiedRide } from './interfaces/ride.interface';
 import { rides } from './data/mocked-rides.json';
-import { promises } from 'fs';
 @Injectable()
 export class RidesService {
-  async getUnifiedRides(): Promise <UnifiedRide[]> {
-    return await rides.map((ride) => (this.normalizeRide(ride)));
+  private readonly logger = new Logger(RidesService.name);
+
+  async getUnifiedRides(): Promise<UnifiedRide[]> {
+    try {
+      return await rides.map((ride) => (this.normalizeRide(ride)));
+    }catch (error) {
+      this.logger.error('Failed to get unified rides', error.stack);
+      throw new Error('Error retrieving rides data');
+    }
   }
 
   normalizeRide(ride: Ride): UnifiedRide {
