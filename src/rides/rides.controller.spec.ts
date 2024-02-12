@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { RidesController } from './rides.controller';
 import { RidesService } from './rides.service';
 import { HttpException, HttpStatus } from '@nestjs/common';
-import e from 'express';
 
 describe('RidesController', () => {
   let controller: RidesController;
