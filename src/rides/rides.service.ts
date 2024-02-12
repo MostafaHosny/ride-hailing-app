@@ -8,7 +8,7 @@ export class RidesService {
   async getUnifiedRides(): Promise<UnifiedRide[]> {
     try {
       return await rides.map((ride) => (this.normalizeRide(ride)));
-    }catch (error) {
+    } catch (error) {
       this.logger.error('Failed to get unified rides', error.stack);
       throw new Error('Error retrieving rides data');
     }
