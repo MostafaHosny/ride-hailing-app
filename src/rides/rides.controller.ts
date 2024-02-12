@@ -10,9 +10,10 @@ export class RidesController {
   async getRides() {
     try {
       return await this.ridesService.getUnifiedRides();
-    } catch (error) {
-      this.logger.error('Failed to retrieve rides', error.stack);
-      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+    }catch (error) {
+    this.logger.error('Failed to retrieve rides', error.stack);
+    throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    
   }
 }
