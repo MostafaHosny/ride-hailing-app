@@ -7,6 +7,6 @@ export class RidesController {
   }
   @Get()
   async getRides() {
-    return await this.ridesService.getRides();
+    return await this.ridesService.getUnifiedRides();
   }
 }

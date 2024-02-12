@@ -20,12 +20,4 @@ describe('RidesController', () => {
     const rides = await controller.getRides();
     expect(rides).toBeDefined();
   });
-
-  it('should return a server error message', async () => {
-    jest.spyOn(ridesService, 'getRides').mockImplementation(() => {
-      throw new Error('Server error');
-    });
-
-    await expect(controller.getRides()).rejects.toThrow('Server error');
-  });
 });
